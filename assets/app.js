@@ -16,7 +16,7 @@
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const playable = (ch) => ch?.audio === true || (typeof ch?.audio === 'string' && ch.audio.trim().length > 0);
   const chapterAudio = (trip, ch) => ch.audio === true ? `${trip.audioFolder}/${ch.file}.mp3` : ch.audio;
-  const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP'];
   // Ein Bild mit gleichem Dateistamm wie die MP3. Fehlende Bilder zeigen ein Fallback.
   function useImage(img, stem, fallback) {
     if (!img) return;
