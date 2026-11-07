@@ -1,0 +1,50 @@
+name: Compress uploaded travel photos
+on:
+  push:
+    paths:
+      - 'audio/**/*.jpg'
+      - 'audio/**/*.jpeg'
+      - 'audio/**/*.JPG'
+      - 'audio/**/*.JPEG'
+      - '.github/workflows/optimize-chapter-images.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install image processor
+        run: python -m pip install --quiet Pillow
+      - name: Optimize oversized chapter images
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps
+          root = Path('audio')
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in ('.jpg', '.jpeg'):
+                  continue
+              if path.stat().st_size < 1000000:
+                  continue
+              is_trip_cover = path.stem.startswith('0') and path.stem.lower() in ('00-cover', '0-cover')
+              width = 2000 if is_trip_cover else 1400
+              quality = 86 if is_trip_cover else 80
+              with Image.open(path) as image:
+                  photo = ImageOps.exif_transpose(image).convert('RGB')
+                  photo.thumbnail((width, width), Image.Resampling.LANCZOS)
+                  photo.save(path, 'JPEG', quality=quality, subsampling=0 if is_trip_cover else 2, optimize=True, progressive=True)
+                  print(f'{path}: {photo.width}x{photo.height}; {path.stat().st_size} bytes')
+          PY
+      - name: Save optimized photos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audio
+          if ! git diff --cached --quiet; then
+            git commit -m "Optimize uploaded travel photos for web"
+            git push
+          fi
