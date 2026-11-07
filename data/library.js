@@ -24,7 +24,7 @@ window.REISECHRONIK_DATA = {
       coverBase: '00-Cover',
       fallbackCover: 'assets/tansania.svg',
       chapters: [
-        { id: 'tz-01', file: '1-ankunft', title: 'Zwischen Gewitter und Bananenplantage', subtitle: 'Unsere ersten Tage in Afrika', audio: null, markers: [] },
+        { id: 'tz-01', file: '01-Banana Farm Tag 1-2', title: 'Banana Farm – Tag 1–2', subtitle: 'Ankunft in Tansania und die ersten Tage in Arusha', audio: true, markers: [] },
         { id: 'tz-02', file: '2-safari', title: 'Die Safari beginnt', subtitle: 'Über Tarangire in die Wildnis', audio: null, markers: [] },
         { id: 'tz-03', file: '3-serengeti', title: 'Nächte in der Serengeti', subtitle: 'Wilde Tiere, Lagerfeuer und Sternenhimmel', audio: null, markers: [] },
         { id: 'tz-04', file: '4-jagdtag', title: 'Jagdtag in der Savanne', subtitle: 'Geparden, Löwen und einmalige Begegnungen', audio: null, markers: [] },
