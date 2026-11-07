@@ -21,7 +21,7 @@ window.REISECHRONIK_DATA = {
       period: '16. September – 2. Oktober 2026',
       subtitle: 'Safari, unvergessliche Begegnungen und Inselgeschichten',
       audioFolder: 'audio/tansania-2026',
-      coverBase: '0-cover',
+      coverBase: '00-Cover',
       fallbackCover: 'assets/tansania.svg',
       chapters: [
         { id: 'tz-01', file: '1-ankunft', title: 'Zwischen Gewitter und Bananenplantage', subtitle: 'Unsere ersten Tage in Afrika', audio: null, markers: [] },
