@@ -37,9 +37,61 @@
     return `${trip.audioFolder}/${chapter.file}`;
   }
   function initImages(root) {
-    root.querySelectorAll('img[data-image-stem]').forEach(img =>
-      useImage(img, img.dataset.imageStem, img.dataset.fallback || 'assets/chapter-placeholder.svg'));
+    root.querySelectorAll('img[data-image-stem]').forEach(img => {
+      useImage(img, img.dataset.imageStem, img.dataset.fallback || 'assets/chapter-placeholder.svg');
+      makeImageFocusable(img);
+    });
   }
+
+  // Klick auf ein Reisecover, Kapitelbild oder das Bild im Player: große Bildansicht.
+  const lightbox = $('image-lightbox');
+  const lightboxImage = $('lightbox-image');
+  const lightboxCaption = $('lightbox-caption');
+  let imageTrigger = null;
+  function openImageLightbox(img) {
+    if (!img || !img.complete || !img.naturalWidth) return;
+    imageTrigger = img;
+    lightboxImage.src = img.currentSrc || img.src;
+    lightboxImage.alt = img.alt || 'Vergrößertes Reisebild';
+    lightboxCaption.textContent = img.alt || '';
+    lightbox.hidden = false;
+    document.body.classList.add('image-open');
+    $('lightbox-close').focus();
+  }
+  function closeImageLightbox() {
+    lightbox.hidden = true;
+    lightboxImage.removeAttribute('src');
+    document.body.classList.remove('image-open');
+    if (imageTrigger && imageTrigger.isConnected) imageTrigger.focus();
+    imageTrigger = null;
+  }
+  function makeImageFocusable(img) {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Bild groß anzeigen: ' + (img.alt || 'Reisebild'));
+    img.title = 'Bild vergrößern';
+  }
+  document.addEventListener('click', (event) => {
+    const img = event.target?.closest?.('img[data-image-stem], #player-art');
+    if (img && lightbox.hidden) openImageLightbox(img);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (!lightbox.hidden) {
+      if (event.key === 'Escape') { event.preventDefault(); closeImageLightbox(); }
+      else if (event.key === 'Tab') { event.preventDefault(); $('lightbox-close').focus(); }
+      return;
+    }
+    if ((event.key === 'Enter' || event.key === ' ') && event.target?.matches?.('img[data-image-stem], #player-art')) {
+      event.preventDefault();
+      openImageLightbox(event.target);
+    }
+  });
+  $('lightbox-close').addEventListener('click', closeImageLightbox);
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeImageLightbox();
+  });
+  makeImageFocusable($('player-art'));
+
   const playableCount = (trip) => trip.chapters.filter(playable).length;
   const fmt = (seconds) => { seconds = Math.max(0, Math.floor(Number(seconds) || 0)); return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`; };
   const escapeAttr = escapeHtml;
