@@ -28,7 +28,7 @@ window.REISECHRONIK_DATA = {
         { id: 'tz-02', file: '02-Tarangire_Tag_3', title: 'Tarangire – Tag 3', subtitle: 'Safari im Tarangire-Nationalpark', audio: true, markers: [] },
         { id: 'tz-03', file: '03-Serengeti_Tag_4', title: 'Serengeti – Tag 4', subtitle: 'Unser erster Tag in der Serengeti', audio: true, markers: [] },
         { id: 'tz-04', file: '04-Serengeti_Tag_5', title: 'Serengeti – Tag 5', subtitle: 'Gepardenfamilie und Safari-Abenteuer', audio: true, markers: [] },
-        { id: 'tz-05', file: '5-menschen', title: 'Menschen und Landschaften', subtitle: 'Begegnungen auf dem Weg durch Tansania', audio: null, markers: [] },
+        { id: 'tz-05', file: '05-Serengeti_Tag_6', title: 'Serengeti – Tag 6', subtitle: 'Unterwegs durch die weiten Landschaften der Serengeti', audio: true, markers: [] },
         { id: 'tz-06', file: '6-sansibar', title: 'Inselgeschichten aus Sansibar', subtitle: 'Ein anderer Rhythmus am Indischen Ozean', audio: null, markers: [] }
       ]
     },
