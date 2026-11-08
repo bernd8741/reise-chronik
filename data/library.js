@@ -29,7 +29,7 @@ window.REISECHRONIK_DATA = {
         { id: 'tz-03', file: '03-Serengeti_Tag_4', title: 'Serengeti – Tag 4', subtitle: 'Unser erster Tag in der Serengeti', audio: true, markers: [] },
         { id: 'tz-04', file: '04-Serengeti_Tag_5', title: 'Serengeti – Tag 5', subtitle: 'Gepardenfamilie und Safari-Abenteuer', audio: true, markers: [] },
         { id: 'tz-05', file: '05-Serengeti_Tag_6', title: 'Serengeti – Tag 6', subtitle: 'Unterwegs durch die weiten Landschaften der Serengeti', audio: true, markers: [] },
-        { id: 'tz-06', file: '6-sansibar', title: 'Inselgeschichten aus Sansibar', subtitle: 'Ein anderer Rhythmus am Indischen Ozean', audio: null, markers: [] }
+        { id: 'tz-06', file: '06-Ngorogoro_Tag_7', title: 'Ngorongoro – Tag 7', subtitle: 'Gnuherden und die Weite der Savanne', audio: true, markers: [] }
       ]
     },
     {
