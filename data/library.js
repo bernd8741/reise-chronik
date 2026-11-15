@@ -30,7 +30,8 @@ window.REISECHRONIK_DATA = {
         { id: 'tz-04', file: '04-Serengeti_Tag_5', title: 'Serengeti – Tag 5', subtitle: 'Gepardenfamilie und Safari-Abenteuer', audio: true, markers: [] },
         { id: 'tz-05', file: '05-Serengeti_Tag_6', title: 'Serengeti – Tag 6', subtitle: 'Unterwegs durch die weiten Landschaften der Serengeti', audio: true, markers: [] },
         { id: 'tz-06', file: '06-Ngorogoro_Tag_7', title: 'Ngorongoro – Tag 7', subtitle: 'Gnuherden und die Weite der Savanne', audio: true, markers: [] },
-        { id: 'tz-07', file: '07-Foresight_Tag_8', title: 'Foresight Eco-Lodge – Tag 8', subtitle: 'Ein ruhiger Morgen mitten im Grünen', audio: true, markers: [] }
+        { id: 'tz-07', file: '07-Foresight_Tag_8', title: 'Foresight Eco-Lodge – Tag 8', subtitle: 'Ein ruhiger Morgen mitten im Grünen', audio: true, markers: [] },
+        { id: 'tz-08', file: '08-Hadzabe_Tag_9', title: 'Hadzabe – Tag 9', subtitle: 'Begegnungen mit den Hadzabe', audio: true, markers: [] }
       ]
     },
     {
